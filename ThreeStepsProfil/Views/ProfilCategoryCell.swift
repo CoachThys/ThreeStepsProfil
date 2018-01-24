@@ -26,7 +26,8 @@ class ProfilCategoryCell: UICollectionViewCell {
         label.layer.shadowOffset = CGSize(width: 0, height: 0)
         label.numberOfLines = 0
         label.textAlignment = .center
-        //        label.font = UIFont(name: "HelveticaNeue", size: 20)
+        label.text = ""
+        label.font = UIFont(name: "HelveticaNeue-Bold", size: 20)
         return label
     }()
     
@@ -63,10 +64,12 @@ class ProfilCategoryCell: UICollectionViewCell {
     fileprivate func loadCategoryTitle() {
         countryStatsLabel.textColor = .white
 
+        
+        
         guard let category = currentCategory else { return }
         countryStatsLabel.text = category.countryId
         
-        countryStatsLabel.attributedText = NSMutableAttributedString(string: "", attributes: [NSAttributedStringKey.font : UIFont(name: "HelveticaNeue", size: 14.0) ?? UIFont.systemFont(ofSize: 12)])
+//        countryStatsLabel.attributedText = NSMutableAttributedString(string: "", attributes: [NSAttributedStringKey.font : UIFont(name: "HelveticaNeue", size: 14.0) ?? UIFont.systemFont(ofSize: 12)])
         
         
 

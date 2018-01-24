@@ -15,7 +15,6 @@ struct Spot {
     // MARK: - Properties
     
     var imageFileURL: String
-    var country: String
     var description: String
     
     // MARK: - Firebase Keys
@@ -23,17 +22,15 @@ struct Spot {
     enum SpotInfoKey {
         
         static let imageUrl = "imageUrl"
-        static let country = "country"
         static let description = "description"
 
     }
     
     // MARK: - Initialization
     
-    init(imageFileURL: String, country: String, description: String) {
+    init(imageFileURL: String, description: String) {
         
         self.imageFileURL = imageFileURL
-        self.country = country
         self.description = description
         
     }

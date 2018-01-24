@@ -8,10 +8,13 @@
 
 import UIKit
 
+struct UserConnected {
+    static var user:User!
+}
+
 class ProfilViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     var collectionView: UICollectionView!
-    
     let cellId = "cellId"
     let headerId = "headerId"
     
@@ -23,13 +26,9 @@ class ProfilViewController: UIViewController, UICollectionViewDataSource, UIColl
         Category(countryId: "TUNISIE", imageUrl: "nat5")
     ]
     
-    var generalSpotList: [Spot]? = []
-    var generalCategoryList: [Category]? = []
-    
     var categoryToSend: Category?
-//    var user: User!
-    
-    var profileImage: UIImage? = UIImage(named: "gates")
+    var generalSpotList: [Spot]? = []
+    var profileImage: UIImage? = nil
     
     let backgroundContainerView: UIView = {
         let v = UIView()
@@ -48,13 +47,24 @@ class ProfilViewController: UIViewController, UICollectionViewDataSource, UIColl
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        setupUser()
         setupNavBar()
         setupCollectionView()
+        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    fileprivate func setupUser() {
+        
+        UserConnected.user = User(username: "Billy", profileImageUrl: "gates")
+        
+        self.profileImage = UIImage(named: UserConnected.user.profileImageUrl)
+        self.title = UserConnected.user.username
+        
     }
     
     fileprivate func setupNavBar() {
@@ -66,8 +76,8 @@ class ProfilViewController: UIViewController, UICollectionViewDataSource, UIColl
         self.navigationController?.navigationBar.barStyle = .black
         
         // Title
-        self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedStringKey.font: UIFont(name: "HelveticaNeue-Bold", size: 18) ?? print("FONT EXISTE PAS"), NSAttributedStringKey.foregroundColor: UIColor.white]
-        self.title = "Billy"
+        self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedStringKey.font: UIFont(name: "HelveticaNeue", size: 18) ?? print("FONT EXISTE PAS"), NSAttributedStringKey.foregroundColor: UIColor.white]
+        self.title = UserConnected.user.username
         
         // Navigation bar transparente
         let navBar = self.navigationController?.navigationBar
@@ -110,6 +120,10 @@ class ProfilViewController: UIViewController, UICollectionViewDataSource, UIColl
         // Cell
         collectionView?.register(ProfilCategoryCell.self, forCellWithReuseIdentifier: cellId)
     }
+}
+
+// MARK - Data Source
+extension ProfilViewController {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if let cellNb = categoryFeed?.count {
@@ -133,14 +147,6 @@ class ProfilViewController: UIViewController, UICollectionViewDataSource, UIColl
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 8
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
-    }
-    
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerId, for: indexPath) as! ProfilHeaderView
         
@@ -148,10 +154,10 @@ class ProfilViewController: UIViewController, UICollectionViewDataSource, UIColl
             header.profileImageView.image = image
         }
         
-        if let spotNb = generalSpotList?.count {
+        if let spotNb = generalSpotList?.count, spotNb != 0 {
             header.spotsLabel.text = "\(spotNb)\nspots"
         } else {
-            header.spotsLabel.text = "0\nspots"
+            header.spotsLabel.text = "16\nspots"
         }
         
         if let countryNb = categoryFeed?.count {
@@ -162,16 +168,35 @@ class ProfilViewController: UIViewController, UICollectionViewDataSource, UIColl
         
         return header
     }
+}
+
+// MARK - Delegate
+extension ProfilViewController {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 8
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         return CGSize(width: view.frame.width, height: 50)
     }
     
-}
-
-extension ProfilViewController {
-    
-    
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        print("You selected cell #\(indexPath.item)")
+        
+        let categorySpotsVC = ProfilCategorySpotsVC()
+        
+        if let categories = categoryFeed {
+            categorySpotsVC.categoryToReceive = categories[indexPath.row]
+        }
+        
+        navigationController?.pushViewController(categorySpotsVC, animated: true)
+        
+    }
 }
 

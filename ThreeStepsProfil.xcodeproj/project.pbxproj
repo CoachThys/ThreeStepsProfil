@@ -19,6 +19,15 @@
 		87F2A8122018AD1A009C13E5 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F2A8112018AD1A009C13E5 /* Category.swift */; };
 		87F2A8142018AE7A009C13E5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 87F2A8132018AE7A009C13E5 /* GoogleService-Info.plist */; };
 		87F2A8182018BAC9009C13E5 /* Spot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F2A8172018BAC9009C13E5 /* Spot.swift */; };
+		87F2A81A2018DB5B009C13E5 /* ProfilCategorySpotsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F2A8192018DB5B009C13E5 /* ProfilCategorySpotsVC.swift */; };
+		87F2A81C2018E25B009C13E5 /* ProfilCategorySpotsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F2A81B2018E25B009C13E5 /* ProfilCategorySpotsCell.swift */; };
+		87F2A81E2018EBC5009C13E5 /* ProfilOneSpotVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F2A81D2018EBC5009C13E5 /* ProfilOneSpotVC.swift */; };
+		87F2A8202018EBF4009C13E5 /* ProfilOneSpotCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F2A81F2018EBF4009C13E5 /* ProfilOneSpotCell.swift */; };
+		87F2A8222018EDF4009C13E5 /* ProfilOneSpotImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F2A8212018EDF3009C13E5 /* ProfilOneSpotImageCell.swift */; };
+		87F2A8242018EE00009C13E5 /* ProfilOneSpotUserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F2A8232018EE00009C13E5 /* ProfilOneSpotUserCell.swift */; };
+		87F2A8262018EE0F009C13E5 /* ProfilOneSpotCaptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F2A8252018EE0F009C13E5 /* ProfilOneSpotCaptionCell.swift */; };
+		87F2A8282018EFA1009C13E5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F2A8272018EFA1009C13E5 /* User.swift */; };
+		87F2A82A2018F983009C13E5 /* ProfilOneSpotLocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F2A8292018F983009C13E5 /* ProfilOneSpotLocationCell.swift */; };
 		AAEF6DDC878EF25D70DE4898 /* Pods_ThreeStepsProfil.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A54A24F98319443791854A22 /* Pods_ThreeStepsProfil.framework */; };
 /* End PBXBuildFile section */
 
@@ -38,6 +47,15 @@
 		87F2A8112018AD1A009C13E5 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		87F2A8132018AE7A009C13E5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		87F2A8172018BAC9009C13E5 /* Spot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spot.swift; sourceTree = "<group>"; };
+		87F2A8192018DB5B009C13E5 /* ProfilCategorySpotsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilCategorySpotsVC.swift; sourceTree = "<group>"; };
+		87F2A81B2018E25B009C13E5 /* ProfilCategorySpotsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilCategorySpotsCell.swift; sourceTree = "<group>"; };
+		87F2A81D2018EBC5009C13E5 /* ProfilOneSpotVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilOneSpotVC.swift; sourceTree = "<group>"; };
+		87F2A81F2018EBF4009C13E5 /* ProfilOneSpotCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilOneSpotCell.swift; sourceTree = "<group>"; };
+		87F2A8212018EDF3009C13E5 /* ProfilOneSpotImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilOneSpotImageCell.swift; sourceTree = "<group>"; };
+		87F2A8232018EE00009C13E5 /* ProfilOneSpotUserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilOneSpotUserCell.swift; sourceTree = "<group>"; };
+		87F2A8252018EE0F009C13E5 /* ProfilOneSpotCaptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilOneSpotCaptionCell.swift; sourceTree = "<group>"; };
+		87F2A8272018EFA1009C13E5 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		87F2A8292018F983009C13E5 /* ProfilOneSpotLocationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilOneSpotLocationCell.swift; sourceTree = "<group>"; };
 		91C38AF52F839EED0B2D7548 /* Pods-ThreeStepsProfil.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ThreeStepsProfil.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ThreeStepsProfil/Pods-ThreeStepsProfil.debug.xcconfig"; sourceTree = "<group>"; };
 		A54A24F98319443791854A22 /* Pods_ThreeStepsProfil.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ThreeStepsProfil.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -101,6 +119,8 @@
 			isa = PBXGroup;
 			children = (
 				87F2A7F52018A457009C13E5 /* ProfilViewController.swift */,
+				87F2A8192018DB5B009C13E5 /* ProfilCategorySpotsVC.swift */,
+				87F2A81D2018EBC5009C13E5 /* ProfilOneSpotVC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -110,6 +130,12 @@
 			children = (
 				87F2A8072018AA45009C13E5 /* ProfilHeaderView.swift */,
 				87F2A80B2018AA7D009C13E5 /* ProfilCategoryCell.swift */,
+				87F2A81B2018E25B009C13E5 /* ProfilCategorySpotsCell.swift */,
+				87F2A81F2018EBF4009C13E5 /* ProfilOneSpotCell.swift */,
+				87F2A8212018EDF3009C13E5 /* ProfilOneSpotImageCell.swift */,
+				87F2A8232018EE00009C13E5 /* ProfilOneSpotUserCell.swift */,
+				87F2A8252018EE0F009C13E5 /* ProfilOneSpotCaptionCell.swift */,
+				87F2A8292018F983009C13E5 /* ProfilOneSpotLocationCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -128,6 +154,7 @@
 			children = (
 				87F2A8112018AD1A009C13E5 /* Category.swift */,
 				87F2A8172018BAC9009C13E5 /* Spot.swift */,
+				87F2A8272018EFA1009C13E5 /* User.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -269,10 +296,19 @@
 				87F2A8082018AA45009C13E5 /* ProfilHeaderView.swift in Sources */,
 				87F2A7F42018A457009C13E5 /* AppDelegate.swift in Sources */,
 				87F2A8182018BAC9009C13E5 /* Spot.swift in Sources */,
+				87F2A8282018EFA1009C13E5 /* User.swift in Sources */,
+				87F2A81E2018EBC5009C13E5 /* ProfilOneSpotVC.swift in Sources */,
+				87F2A8262018EE0F009C13E5 /* ProfilOneSpotCaptionCell.swift in Sources */,
+				87F2A8242018EE00009C13E5 /* ProfilOneSpotUserCell.swift in Sources */,
+				87F2A81A2018DB5B009C13E5 /* ProfilCategorySpotsVC.swift in Sources */,
+				87F2A8202018EBF4009C13E5 /* ProfilOneSpotCell.swift in Sources */,
 				87F2A8062018A67F009C13E5 /* AnchorExt.swift in Sources */,
 				87F2A80F2018AC6B009C13E5 /* CacheManager.swift in Sources */,
+				87F2A82A2018F983009C13E5 /* ProfilOneSpotLocationCell.swift in Sources */,
+				87F2A81C2018E25B009C13E5 /* ProfilCategorySpotsCell.swift in Sources */,
 				87F2A80C2018AA7D009C13E5 /* ProfilCategoryCell.swift in Sources */,
 				87F2A8122018AD1A009C13E5 /* Category.swift in Sources */,
+				87F2A8222018EDF4009C13E5 /* ProfilOneSpotImageCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
