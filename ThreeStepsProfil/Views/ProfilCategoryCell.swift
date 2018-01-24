@@ -56,21 +56,26 @@ class ProfilCategoryCell: UICollectionViewCell {
     }
     
     override func layoutSubviews() {
-//        loadCategoryTitle()
+        loadCategoryTitle()
         layoutIfNeeded()
     }
     
-//    fileprivate func loadCategoryTitle() {
-//        countryStatsLabel.textColor = .white
-//
-//        guard let category = currentCategory else { return }
-//
-//        countryStatsLabel.attributedText = NSMutableAttributedString(string: "", attributes: [NSAttributedStringKey.font : UIFont(name: "HelveticaNeue", size: 14.0) ?? UIFont.systemFont(ofSize: 12)])
-//
+    fileprivate func loadCategoryTitle() {
+        countryStatsLabel.textColor = .white
+
+        guard let category = currentCategory else { return }
+        countryStatsLabel.text = category.countryId
+        
+        countryStatsLabel.attributedText = NSMutableAttributedString(string: "", attributes: [NSAttributedStringKey.font : UIFont(name: "HelveticaNeue", size: 14.0) ?? UIFont.systemFont(ofSize: 12)])
+        
+        
+
 //        let capText = category.countryId.uppercased()
-//        guard let nbSpot = category.nbOfSpots else {
-//            print(category.nbOfSpots)
-//            return
+//
+//        let nbSpot: Int? = nil
+//
+//        if let nb = category.nbOfSpots {
+//            nbSpot = nb
 //        }
 //
 //        var nbSpotText = ""
@@ -87,7 +92,7 @@ class ProfilCategoryCell: UICollectionViewCell {
 //        attributedText.append(NSAttributedString(string: capText, attributes: [NSAttributedStringKey.font : UIFont(name: "HelveticaNeue-Bold", size: 20.0) ?? UIFont.systemFont(ofSize: 10)]))
 //
 //        countryStatsLabel.attributedText = attributedText
-//    }
+    }
     
     func configure(category: Category) {
         
@@ -99,36 +104,12 @@ class ProfilCategoryCell: UICollectionViewCell {
         categoryImageView.layer.cornerRadius = 5.0
         categoryImageView.layer.masksToBounds = true
         
-        // Download post image
-        if let image = CacheManager.shared.getFromCache(key: category.imageUrl) as? UIImage {
-            categoryImageView.image = image
+        if let image = currentCategory?.imageUrl {
+            categoryImageView.image = UIImage(named: image)
         } else {
-            if let url = URL(string: category.imageUrl) {
-                print("L'image va etre téléchargée du Storage")
-                
-                let downloadTask = URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
-                    
-                    guard let imageData = data else {
-                        return
-                    }
-                    
-                    DispatchQueue.main.async {
-                        guard let image = UIImage(data: imageData) else { return }
-                        
-                        if self.currentCategory?.imageUrl == category.imageUrl {
-                            self.categoryImageView.image = image
-                            self.filterImageView.backgroundColor = .black
-                            self.filterImageView.alpha = 0.2
-                        }
-                        
-                        // Add the downloaded image to cache
-                        CacheManager.shared.cache(object: image, key: category.imageUrl)
-                    }
-                })
-                
-                downloadTask.resume()
-            }
+            print("There was an error fetching the image")
         }
+
     }
     
     

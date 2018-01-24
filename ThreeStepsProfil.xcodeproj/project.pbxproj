@@ -18,6 +18,7 @@
 		87F2A80F2018AC6B009C13E5 /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F2A80E2018AC6B009C13E5 /* CacheManager.swift */; };
 		87F2A8122018AD1A009C13E5 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F2A8112018AD1A009C13E5 /* Category.swift */; };
 		87F2A8142018AE7A009C13E5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 87F2A8132018AE7A009C13E5 /* GoogleService-Info.plist */; };
+		87F2A8182018BAC9009C13E5 /* Spot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F2A8172018BAC9009C13E5 /* Spot.swift */; };
 		AAEF6DDC878EF25D70DE4898 /* Pods_ThreeStepsProfil.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A54A24F98319443791854A22 /* Pods_ThreeStepsProfil.framework */; };
 /* End PBXBuildFile section */
 
@@ -36,6 +37,7 @@
 		87F2A80E2018AC6B009C13E5 /* CacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheManager.swift; sourceTree = "<group>"; };
 		87F2A8112018AD1A009C13E5 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		87F2A8132018AE7A009C13E5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		87F2A8172018BAC9009C13E5 /* Spot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spot.swift; sourceTree = "<group>"; };
 		91C38AF52F839EED0B2D7548 /* Pods-ThreeStepsProfil.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ThreeStepsProfil.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ThreeStepsProfil/Pods-ThreeStepsProfil.debug.xcconfig"; sourceTree = "<group>"; };
 		A54A24F98319443791854A22 /* Pods_ThreeStepsProfil.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ThreeStepsProfil.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -125,6 +127,7 @@
 			isa = PBXGroup;
 			children = (
 				87F2A8112018AD1A009C13E5 /* Category.swift */,
+				87F2A8172018BAC9009C13E5 /* Spot.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -265,6 +268,7 @@
 				87F2A7F62018A457009C13E5 /* ProfilViewController.swift in Sources */,
 				87F2A8082018AA45009C13E5 /* ProfilHeaderView.swift in Sources */,
 				87F2A7F42018A457009C13E5 /* AppDelegate.swift in Sources */,
+				87F2A8182018BAC9009C13E5 /* Spot.swift in Sources */,
 				87F2A8062018A67F009C13E5 /* AnchorExt.swift in Sources */,
 				87F2A80F2018AC6B009C13E5 /* CacheManager.swift in Sources */,
 				87F2A80C2018AA7D009C13E5 /* ProfilCategoryCell.swift in Sources */,

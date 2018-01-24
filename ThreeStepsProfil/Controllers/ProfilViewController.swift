@@ -8,16 +8,28 @@
 
 import UIKit
 
-class ProfilViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class ProfilViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     var collectionView: UICollectionView!
     
     let cellId = "cellId"
     let headerId = "headerId"
-    var categoryFeed: [Category] = []
+    
+    var categoryFeed: [Category]? = [
+        Category(countryId: "FRANCE", imageUrl: "nat1"),
+        Category(countryId: "ESPAGNE", imageUrl: "nat2"),
+        Category(countryId: "AUSTRALIE", imageUrl: "nat3"),
+        Category(countryId: "MEXIQUE", imageUrl: "nat4"),
+        Category(countryId: "TUNISIE", imageUrl: "nat5")
+    ]
+    
+    var generalSpotList: [Spot]? = []
+    var generalCategoryList: [Category]? = []
     
     var categoryToSend: Category?
 //    var user: User!
+    
+    var profileImage: UIImage? = UIImage(named: "gates")
     
     let backgroundContainerView: UIView = {
         let v = UIView()
@@ -37,6 +49,7 @@ class ProfilViewController: UIViewController, UICollectionViewDataSource, UIColl
         // Do any additional setup after loading the view, typically from a nib.
         
         setupNavBar()
+        setupCollectionView()
     }
 
     override func didReceiveMemoryWarning() {
@@ -54,6 +67,7 @@ class ProfilViewController: UIViewController, UICollectionViewDataSource, UIColl
         
         // Title
         self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedStringKey.font: UIFont(name: "HelveticaNeue-Bold", size: 18) ?? print("FONT EXISTE PAS"), NSAttributedStringKey.foregroundColor: UIColor.white]
+        self.title = "Billy"
         
         // Navigation bar transparente
         let navBar = self.navigationController?.navigationBar
@@ -64,7 +78,6 @@ class ProfilViewController: UIViewController, UICollectionViewDataSource, UIColl
         navBar?.isTranslucent = true
         navBar?.backgroundColor = UIColor.clear
         navBar?.tintColor = .white
-        
         
     }
     
@@ -79,17 +92,17 @@ class ProfilViewController: UIViewController, UICollectionViewDataSource, UIColl
         layout.itemSize = CGSize(width: itemWidth, height: itemHeight)
         
         guard let navBarHeight = self.navigationController?.navigationBar.intrinsicContentSize.height else { return }
-        guard let tabBarHeight = self.tabBarController?.tabBar.frame.height else { return }
 
+        print("navBarHeight:",navBarHeight)
         let collectionViewYPosition = UIApplication.shared.statusBarFrame.height + navBarHeight
-        let frame = CGRect(x: 0, y: collectionViewYPosition, width: view.frame.width, height: view.frame.height - tabBarHeight - navBarHeight - (insets * 3/2))
+        let frame = CGRect(x: 0, y: collectionViewYPosition, width: view.frame.width, height: view.frame.height - navBarHeight - (insets * 3/2))
         
         collectionView = UICollectionView(frame: frame, collectionViewLayout: layout)
         
         collectionView.dataSource = self
         collectionView.delegate = self
-        collectionView.backgroundColor = .clear
-        self.view.addSubview(collectionView)
+        collectionView.backgroundColor = UIColor.clear
+        self.backgroundContainerView.addSubview(collectionView)
         
         // Header
         collectionView?.register(ProfilHeaderView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerId)
@@ -99,19 +112,23 @@ class ProfilViewController: UIViewController, UICollectionViewDataSource, UIColl
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
-        return categoryFeed.count
+        if let cellNb = categoryFeed?.count {
+            return cellNb
+        } else {
+            return 0
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! ProfilCategoryCell
         
-        cell.backgroundColor = .clear
+        cell.backgroundColor = UIColor(white: 0.5, alpha: 0.5)
         cell.layer.cornerRadius = 8
         cell.categoryImageView.contentMode = .scaleAspectFill
         
-//        let currentCategory = categoryFeed[indexPath.row]
-//        cell.configure(category: currentCategory)
+        if let categories = categoryFeed {
+            cell.configure(category: categories[indexPath.row])
+        }
         
         return cell
     }
@@ -125,9 +142,7 @@ class ProfilViewController: UIViewController, UICollectionViewDataSource, UIColl
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerId, for: indexPath) as! UserProfileHeaderTris
-        //        header.setImageDelegate = self
-        //        header.user = self.user
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerId, for: indexPath) as! ProfilHeaderView
         
         if let image = self.profileImage {
             header.profileImageView.image = image
@@ -135,9 +150,11 @@ class ProfilViewController: UIViewController, UICollectionViewDataSource, UIColl
         
         if let spotNb = generalSpotList?.count {
             header.spotsLabel.text = "\(spotNb)\nspots"
+        } else {
+            header.spotsLabel.text = "0\nspots"
         }
         
-        if let countryNb = generalCategoryList?.count {
+        if let countryNb = categoryFeed?.count {
             header.countriesLabel.text = "\(countryNb)\npays"
         } else {
             header.countriesLabel.text = "0\npays"
