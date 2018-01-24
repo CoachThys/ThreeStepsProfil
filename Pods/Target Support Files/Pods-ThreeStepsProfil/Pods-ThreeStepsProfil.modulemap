@@ -1,0 +1,6 @@
+framework module Pods_ThreeStepsProfil {
+  umbrella header "Pods-ThreeStepsProfil-umbrella.h"
+
+  export *
+  module * { export * }
+}
