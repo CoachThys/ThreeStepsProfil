@@ -12,12 +12,19 @@ struct UserConnected {
     static var user:User!
 }
 
-class ProfilViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+class ProfilViewController: UIViewController, UICollectionViewDelegateFlowLayout {
     
+    // MARK - Properties
     var collectionView: UICollectionView!
     let cellId = "cellId"
     let headerId = "headerId"
+    var categoryToSend: Category?
+    var generalSpotList: [Spot]? = []
+    var profileImage: UIImage?
+    let insets: CGFloat = 16
     
+    
+    // MARK - Data to fetch
     var categoryFeed: [Category]? = [
         Category(countryId: "FRANCE", imageUrl: "nat1"),
         Category(countryId: "ESPAGNE", imageUrl: "nat2"),
@@ -26,31 +33,34 @@ class ProfilViewController: UIViewController, UICollectionViewDataSource, UIColl
         Category(countryId: "TUNISIE", imageUrl: "nat5")
     ]
     
-    var categoryToSend: Category?
-    var generalSpotList: [Spot]? = []
-    var profileImage: UIImage? = nil
-    
+    // MARK - Setup Views
     let backgroundContainerView: UIView = {
         let v = UIView()
-        
         // Background gradient color
         let blueToWhiteLayer = CAGradientLayer()
         blueToWhiteLayer.frame = UIScreen.main.bounds
         blueToWhiteLayer.colors = [UIColor(red: 32/255.5, green: 100/255.5,blue: 178/255.5, alpha: 1.0).cgColor, UIColor.white.cgColor]
         blueToWhiteLayer.locations = [0.0, 0.9, 1.0]
-        v.layer.insertSublayer(blueToWhiteLayer, at: 0)
         
+        v.layer.insertSublayer(blueToWhiteLayer, at: 0)
         return v
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        
+
+        setupBackgroundView()
         setupUser()
         setupNavBar()
         setupCollectionView()
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
     }
 
     override func didReceiveMemoryWarning() {
@@ -58,26 +68,28 @@ class ProfilViewController: UIViewController, UICollectionViewDataSource, UIColl
         // Dispose of any resources that can be recreated.
     }
     
-    fileprivate func setupUser() {
-        
-        UserConnected.user = User(username: "Billy", profileImageUrl: "gates")
-        
-        self.profileImage = UIImage(named: UserConnected.user.profileImageUrl)
-        self.title = UserConnected.user.username
-        
-    }
-    
-    fileprivate func setupNavBar() {
+    // MARK - Functions
+    fileprivate func setupBackgroundView() {
+        UIApplication.shared.statusBarStyle = .lightContent
         edgesForExtendedLayout = [.top]
         
         view.addSubview(backgroundContainerView)
         backgroundContainerView.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
         
         self.navigationController?.navigationBar.barStyle = .black
-        
+    }
+    
+    fileprivate func setupUser() {
+        UserConnected.user = User(username: "Billy", profileImageUrl: "gates")
+        self.profileImage = UIImage(named: UserConnected.user.profileImageUrl)
+        self.title = UserConnected.user.username
+    }
+    
+    fileprivate func setupNavBar() {
+
         // Title
         self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedStringKey.font: UIFont(name: "HelveticaNeue", size: 18) ?? print("FONT EXISTE PAS"), NSAttributedStringKey.foregroundColor: UIColor.white]
-        self.title = UserConnected.user.username
+        navigationItem.title = UserConnected.user.username
         
         // Navigation bar transparente
         let navBar = self.navigationController?.navigationBar
@@ -94,21 +106,21 @@ class ProfilViewController: UIViewController, UICollectionViewDataSource, UIColl
     fileprivate func setupCollectionView() {
         
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        let insets: CGFloat = 16
-        layout.sectionInset = UIEdgeInsets(top: insets, left: insets, bottom: insets / 2, right: insets)
-        let itemWidth: CGFloat = view.bounds.width - (insets * 2)
+        layout.sectionInset = UIEdgeInsets(top: self.insets, left: self.insets, bottom: self.insets / 2, right: self.insets)
+        let itemWidth: CGFloat = view.bounds.width - (self.insets * 2)
         let itemHeight: CGFloat = itemWidth / 5 * 2
         
         layout.itemSize = CGSize(width: itemWidth, height: itemHeight)
         
-        guard let navBarHeight = self.navigationController?.navigationBar.intrinsicContentSize.height else { return }
+        guard let navBarHeight = self.navigationController?.navigationBar.intrinsicContentSize.height else {
+            print("There was an error getting navigation bar height")
+            return
+        }
 
-        print("navBarHeight:",navBarHeight)
         let collectionViewYPosition = UIApplication.shared.statusBarFrame.height + navBarHeight
-        let frame = CGRect(x: 0, y: collectionViewYPosition, width: view.frame.width, height: view.frame.height - navBarHeight - (insets * 3/2))
+        let frame = CGRect(x: 0, y: collectionViewYPosition, width: view.frame.width, height: view.frame.height - navBarHeight - (self.insets * 3/2))
         
         collectionView = UICollectionView(frame: frame, collectionViewLayout: layout)
-        
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.backgroundColor = UIColor.clear
@@ -116,14 +128,13 @@ class ProfilViewController: UIViewController, UICollectionViewDataSource, UIColl
         
         // Header
         collectionView?.register(ProfilHeaderView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerId)
-        
         // Cell
         collectionView?.register(ProfilCategoryCell.self, forCellWithReuseIdentifier: cellId)
     }
 }
 
 // MARK - Data Source
-extension ProfilViewController {
+extension ProfilViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if let cellNb = categoryFeed?.count {
@@ -171,10 +182,10 @@ extension ProfilViewController {
 }
 
 // MARK - Delegate
-extension ProfilViewController {
+extension ProfilViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 8
+        return (self.insets / 2)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {

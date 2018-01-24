@@ -10,6 +10,7 @@ import UIKit
 
 class ProfilHeaderView: UICollectionViewCell {
     
+    // Views
     let containerView: UIView = {
         let v = UIView()
         v.backgroundColor = .clear
@@ -19,10 +20,6 @@ class ProfilHeaderView: UICollectionViewCell {
     let countriesLabel: UILabel = {
         let label = UILabel()
         label.backgroundColor = .clear
-        //        label.layer.cornerRadius = 4
-        //        label.clipsToBounds = true
-        //        label.layer.borderColor = UIColor.lightGray.cgColor
-        //        label.layer.borderWidth = 1
         label.text = ""
         label.numberOfLines = 0
         label.textAlignment = .center
@@ -34,10 +31,6 @@ class ProfilHeaderView: UICollectionViewCell {
     let spotsLabel: UILabel = {
         let label = UILabel()
         label.backgroundColor = .clear
-        //        label.layer.cornerRadius = 4
-        //        label.clipsToBounds = true
-        //        label.layer.borderColor = UIColor.lightGray.cgColor
-        //        label.layer.borderWidth = 1
         label.text = ""
         label.numberOfLines = 0
         label.textAlignment = .center
@@ -54,12 +47,6 @@ class ProfilHeaderView: UICollectionViewCell {
         iv.clipsToBounds = true
         return iv
     }()
-    
-    //    var user: User? {
-    //        didSet{
-    //            setupProfileImage()
-    //        }
-    //    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -79,13 +66,8 @@ class ProfilHeaderView: UICollectionViewCell {
         containerView.addSubview(countriesLabel)
         countriesLabel.anchor(top: nil, left: nil, bottom: containerView.bottomAnchor, right: profileImageView.leftAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 50, width: 0, height: 0)
         
-        //        setupProfileImage()
     }
-    
 
-    
-    
-    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

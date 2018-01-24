@@ -10,6 +10,8 @@ import UIKit
 
 class ProfilOneSpotUserCell: UITableViewCell {
     
+    
+    // MARK - Views
     let containerView : UIView = {
         let v = UIView()
         v.backgroundColor = .clear
@@ -36,25 +38,17 @@ class ProfilOneSpotUserCell: UITableViewCell {
         return label
     }()
     
-    var spot: Spot? {
-        didSet {
-
-        }
-    }
-    
-    var user: User? {
-        didSet {
-            setupUserInfos()
-        }
-    }
-    
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
         setupViews()
         setupUserInfos()
     }
     
+    override func layoutSubviews() {
+    
+    }
+    
+    // MARK - Functions
     fileprivate func setupViews() {
         contentView.addSubview(containerView)
         containerView.anchor(top: contentView.topAnchor, left: contentView.leftAnchor, bottom: contentView.bottomAnchor, right: contentView.rightAnchor, paddingTop: 12, paddingLeft: 12, paddingBottom: 0, paddingRight: 12, width: 0, height: 35)
@@ -68,16 +62,11 @@ class ProfilOneSpotUserCell: UITableViewCell {
         usernameLabel.anchor(top: containerView.topAnchor, left: userImageView.rightAnchor, bottom: containerView.bottomAnchor, right: nil, paddingTop: 0, paddingLeft: 8, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
     }
     
-    override func layoutSubviews() {
-    }
+
     
     fileprivate func setupUserInfos() {
-        
-        guard let user = user else { return }
-        
-        self.userImageView.image = UIImage(named: user.profileImageUrl)
-        self.usernameLabel.text = user.username
-        
+        self.userImageView.image = UIImage(named: UserConnected.user.profileImageUrl)
+        self.usernameLabel.text = UserConnected.user.username
     }
     
     

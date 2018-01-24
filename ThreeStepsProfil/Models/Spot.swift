@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import Firebase
-import CoreLocation
 
 struct Spot {
     

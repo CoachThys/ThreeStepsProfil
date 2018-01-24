@@ -10,6 +10,7 @@ import UIKit
 
 class ProfilCategorySpotsCell: UICollectionViewCell {
     
+    // MARK - Views
     var spotImageView: UIImageView =  {
         let iv = UIImageView()
         iv.backgroundColor = .lightGray
@@ -18,6 +19,7 @@ class ProfilCategorySpotsCell: UICollectionViewCell {
         return iv
     }()
     
+    // MARK - Properties
     private var currentSpot: Spot?
     
     override init(frame: CGRect) {
@@ -33,6 +35,7 @@ class ProfilCategorySpotsCell: UICollectionViewCell {
     }
     
     
+    // MARK - Functions
     func configure(spot: Spot) {
         
         currentSpot = spot

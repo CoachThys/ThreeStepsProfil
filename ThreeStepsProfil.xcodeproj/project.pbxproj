@@ -22,7 +22,6 @@
 		87F2A81A2018DB5B009C13E5 /* ProfilCategorySpotsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F2A8192018DB5B009C13E5 /* ProfilCategorySpotsVC.swift */; };
 		87F2A81C2018E25B009C13E5 /* ProfilCategorySpotsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F2A81B2018E25B009C13E5 /* ProfilCategorySpotsCell.swift */; };
 		87F2A81E2018EBC5009C13E5 /* ProfilOneSpotVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F2A81D2018EBC5009C13E5 /* ProfilOneSpotVC.swift */; };
-		87F2A8202018EBF4009C13E5 /* ProfilOneSpotCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F2A81F2018EBF4009C13E5 /* ProfilOneSpotCell.swift */; };
 		87F2A8222018EDF4009C13E5 /* ProfilOneSpotImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F2A8212018EDF3009C13E5 /* ProfilOneSpotImageCell.swift */; };
 		87F2A8242018EE00009C13E5 /* ProfilOneSpotUserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F2A8232018EE00009C13E5 /* ProfilOneSpotUserCell.swift */; };
 		87F2A8262018EE0F009C13E5 /* ProfilOneSpotCaptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F2A8252018EE0F009C13E5 /* ProfilOneSpotCaptionCell.swift */; };
@@ -50,7 +49,6 @@
 		87F2A8192018DB5B009C13E5 /* ProfilCategorySpotsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilCategorySpotsVC.swift; sourceTree = "<group>"; };
 		87F2A81B2018E25B009C13E5 /* ProfilCategorySpotsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilCategorySpotsCell.swift; sourceTree = "<group>"; };
 		87F2A81D2018EBC5009C13E5 /* ProfilOneSpotVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilOneSpotVC.swift; sourceTree = "<group>"; };
-		87F2A81F2018EBF4009C13E5 /* ProfilOneSpotCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilOneSpotCell.swift; sourceTree = "<group>"; };
 		87F2A8212018EDF3009C13E5 /* ProfilOneSpotImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilOneSpotImageCell.swift; sourceTree = "<group>"; };
 		87F2A8232018EE00009C13E5 /* ProfilOneSpotUserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilOneSpotUserCell.swift; sourceTree = "<group>"; };
 		87F2A8252018EE0F009C13E5 /* ProfilOneSpotCaptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilOneSpotCaptionCell.swift; sourceTree = "<group>"; };
@@ -131,7 +129,6 @@
 				87F2A8072018AA45009C13E5 /* ProfilHeaderView.swift */,
 				87F2A80B2018AA7D009C13E5 /* ProfilCategoryCell.swift */,
 				87F2A81B2018E25B009C13E5 /* ProfilCategorySpotsCell.swift */,
-				87F2A81F2018EBF4009C13E5 /* ProfilOneSpotCell.swift */,
 				87F2A8212018EDF3009C13E5 /* ProfilOneSpotImageCell.swift */,
 				87F2A8232018EE00009C13E5 /* ProfilOneSpotUserCell.swift */,
 				87F2A8252018EE0F009C13E5 /* ProfilOneSpotCaptionCell.swift */,
@@ -301,7 +298,6 @@
 				87F2A8262018EE0F009C13E5 /* ProfilOneSpotCaptionCell.swift in Sources */,
 				87F2A8242018EE00009C13E5 /* ProfilOneSpotUserCell.swift in Sources */,
 				87F2A81A2018DB5B009C13E5 /* ProfilCategorySpotsVC.swift in Sources */,
-				87F2A8202018EBF4009C13E5 /* ProfilOneSpotCell.swift in Sources */,
 				87F2A8062018A67F009C13E5 /* AnchorExt.swift in Sources */,
 				87F2A80F2018AC6B009C13E5 /* CacheManager.swift in Sources */,
 				87F2A82A2018F983009C13E5 /* ProfilOneSpotLocationCell.swift in Sources */,

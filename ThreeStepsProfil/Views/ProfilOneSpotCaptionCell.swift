@@ -10,21 +10,22 @@ import UIKit
 
 class ProfilOneSpotCaptionCell: UITableViewCell {
     
+    // MARK - Views
     let containerView: UIView = {
         let v = UIView()
-        //        v.backgroundColor = .lightGray
+        v.backgroundColor = .clear
         return v
     }()
     
     lazy var captionLabel : UILabel = {
         let label = UILabel()
-        //        label.backgroundColor = .orange
         label.text = "Blablabla"
         label.font = UIFont(name: "HelveticaNeue-Light", size: 14.0)
         label.numberOfLines = 0
         return label
     }()
     
+    // MARK - Properties
     var spot: Spot? {
         didSet {
             guard let spot = spot else { return }
@@ -36,9 +37,9 @@ class ProfilOneSpotCaptionCell: UITableViewCell {
         super.init(style: .default, reuseIdentifier: reuseIdentifier)
         setupContainer()
         
-        layoutIfNeeded()
     }
     
+    // MARK - Functions
     fileprivate func setupContainer() {
         contentView.addSubview(containerView)
         containerView.anchor(top: contentView.topAnchor, left: contentView.leftAnchor, bottom: contentView.bottomAnchor, right: contentView.rightAnchor, paddingTop: 12, paddingLeft: 12, paddingBottom: 6, paddingRight: 12, width: 0, height: 0)

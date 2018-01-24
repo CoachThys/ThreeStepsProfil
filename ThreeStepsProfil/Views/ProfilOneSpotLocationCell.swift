@@ -7,20 +7,11 @@
 //
 
 import UIKit
+import GoogleMaps
 
 class ProfilOneSpotLocationCell: UITableViewCell {
     
-    var mapIsSet = false
-    
-    var spot:Spot? {
-        didSet {
-            if !mapIsSet {
-                setupMap()
-                mapIsSet = true
-            }
-        }
-    }
-    
+    // MARK - Views
     let containerView: UIView = {
         let v = UIView()
         v.backgroundColor = .clear
@@ -49,12 +40,24 @@ class ProfilOneSpotLocationCell: UITableViewCell {
         return label
     }()
     
+    // MARK - Properties
+    var mapIsSet = false
+    var spot:Spot? {
+        didSet {
+            if !mapIsSet {
+                setupMap()
+                mapIsSet = true
+            }
+        }
+    }
+    
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         setupViews()
     }
     
+    // MARK - Functions
     fileprivate func setupViews() {
         contentView.addSubview(containerView)
         containerView.anchor(top: contentView.topAnchor, left: contentView.leftAnchor, bottom: contentView.bottomAnchor, right: contentView.rightAnchor, paddingTop: 6, paddingLeft: 12, paddingBottom: 12, paddingRight: 12, width: 0, height: 0)
@@ -62,7 +65,7 @@ class ProfilOneSpotLocationCell: UITableViewCell {
         containerView.addSubview(titleLabel)
         containerView.addSubview(mapContainer)
         
-        mapContainer.anchor(top: nil, left: containerView.leftAnchor, bottom: containerView.bottomAnchor, right: containerView.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 150)
+        mapContainer.anchor(top: nil, left: containerView.leftAnchor, bottom: containerView.bottomAnchor, right: containerView.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 250)
         
         titleLabel.anchor(top: containerView.topAnchor, left: containerView.leftAnchor, bottom: mapContainer.topAnchor, right: containerView.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 3, paddingRight: 0, width: 0, height: 0)
         
@@ -70,20 +73,19 @@ class ProfilOneSpotLocationCell: UITableViewCell {
     
     fileprivate func setupMap() {
         
-        guard let spot = spot else { return }
+        GMSServices.provideAPIKey("AIzaSyAYOxXLk6JpFsG3J79xovx3n0a2ZDoCznk")
         
-        let camera = GMSCameraPosition.came
-        
+        let camera = GMSCameraPosition.camera(withLatitude: 55.0, longitude: 85.0, zoom: 10)
         myMapView = GMSMapView.map(withFrame: self.mapContainer.bounds, camera: camera)
         myMapView.isUserInteractionEnabled = false
         
         containerView.addSubview(myMapView)
-        myMapView.anchor(top: mapContainer.topAnchor, left: mapContainer.leftAnchor, bottom: mapContainer.bottomAnchor, right: mapContainer.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 150)
+        myMapView.anchor(top: mapContainer.topAnchor, left: mapContainer.leftAnchor, bottom: mapContainer.bottomAnchor, right: mapContainer.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 250)
         
         let marker = GMSMarker()
         marker.position = camera.target
         
-        marker.icon = UIImage(named:"profil-select")
+//        marker.icon = UIImage(named:"profil-select")
         marker.map = myMapView as? GMSMapView
         
     }

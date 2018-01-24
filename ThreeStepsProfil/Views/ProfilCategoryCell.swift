@@ -10,6 +10,7 @@ import UIKit
 
 class ProfilCategoryCell: UICollectionViewCell {
     
+    // MARK - Views
     let categoryImageView: UIImageView = {
         let iv = UIImageView()
         return iv
@@ -27,10 +28,12 @@ class ProfilCategoryCell: UICollectionViewCell {
         label.numberOfLines = 0
         label.textAlignment = .center
         label.text = ""
+        label.textColor = .white
         label.font = UIFont(name: "HelveticaNeue-Bold", size: 20)
         return label
     }()
     
+    // MARK - Properties
     private var currentCategory: Category?
     
     override init(frame: CGRect) {
@@ -61,40 +64,11 @@ class ProfilCategoryCell: UICollectionViewCell {
         layoutIfNeeded()
     }
     
+    // MARK - Functions
+    
     fileprivate func loadCategoryTitle() {
-        countryStatsLabel.textColor = .white
-
-        
-        
         guard let category = currentCategory else { return }
         countryStatsLabel.text = category.countryId
-        
-//        countryStatsLabel.attributedText = NSMutableAttributedString(string: "", attributes: [NSAttributedStringKey.font : UIFont(name: "HelveticaNeue", size: 14.0) ?? UIFont.systemFont(ofSize: 12)])
-        
-        
-
-//        let capText = category.countryId.uppercased()
-//
-//        let nbSpot: Int? = nil
-//
-//        if let nb = category.nbOfSpots {
-//            nbSpot = nb
-//        }
-//
-//        var nbSpotText = ""
-//        if nbSpot > 1 {
-//            nbSpotText = ("\(nbSpot) spots")
-//        } else {
-//            nbSpotText = ("\(nbSpot) spot")
-//        }
-//
-//        let attributedText = NSMutableAttributedString(string: nbSpotText, attributes: [NSAttributedStringKey.font : UIFont(name: "HelveticaNeue", size: 14.0) ?? UIFont.systemFont(ofSize: 12)])
-//
-//        attributedText.append(NSAttributedString(string: "\n", attributes: [NSAttributedStringKey.font : UIFont.systemFont(ofSize: 10)]))
-//
-//        attributedText.append(NSAttributedString(string: capText, attributes: [NSAttributedStringKey.font : UIFont(name: "HelveticaNeue-Bold", size: 20.0) ?? UIFont.systemFont(ofSize: 10)]))
-//
-//        countryStatsLabel.attributedText = attributedText
     }
     
     func configure(category: Category) {
@@ -114,6 +88,5 @@ class ProfilCategoryCell: UICollectionViewCell {
         }
 
     }
-    
-    
+
 }

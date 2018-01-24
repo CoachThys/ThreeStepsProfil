@@ -8,47 +8,50 @@
 
 import UIKit
 
-class ProfilOneSpotVC: UIViewController, UITableViewDelegate {
+class ProfilOneSpotVC: UIViewController {
     
+    // MARK - Views
     let backgroundContainerView: UIView = {
         let v = UIView()
         v.backgroundColor = .yellow
         return v
     }()
     
+    // MARK - Properties
     let defaultCellId = "defaultCellId"
     let imageCellId = "imageCellId"
     let userCellId = "userCellId"
     let captionCellId = "captionCellId"
-    
+    let mapCellId = "mapCellId"
     var tableView: UITableView!
-    var spotToReceive: Spot! = nil
+    var spotToReceive: Spot!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .lightGray
-        view.addSubview(backgroundContainerView)
-        backgroundContainerView.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
 
+
+        setupBackgroundViews()
         setupNavBar()
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        
         setupTableView()
-        
         UIApplication.shared.isStatusBarHidden = true
-
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        
-        UIApplication.shared.isStatusBarHidden = false
 
+        UIApplication.shared.isStatusBarHidden = false
+    }
+    
+    // MARK - Functions
+    fileprivate func setupBackgroundViews() {
+        view.backgroundColor = .lightGray
+        view.addSubview(backgroundContainerView)
+        backgroundContainerView.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
     }
     
     fileprivate func setupNavBar() {
@@ -79,10 +82,6 @@ class ProfilOneSpotVC: UIViewController, UITableViewDelegate {
         backgroundContainerView.addSubview(tableView)
         tableView.anchor(top: backgroundContainerView.topAnchor, left: backgroundContainerView.leftAnchor, bottom: backgroundContainerView.bottomAnchor, right: backgroundContainerView.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
         
-        //        self.edgesForExtendedLayout = []
-        //        self.extendedLayoutIncludesOpaqueBars = true
-        //        self.automaticallyAdjustsScrollViewInsets = false
-        
         tableView.backgroundColor = .lightGray
         tableView.separatorColor = .clear
         
@@ -90,13 +89,14 @@ class ProfilOneSpotVC: UIViewController, UITableViewDelegate {
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: defaultCellId)
         tableView.register(ProfilOneSpotUserCell.self, forCellReuseIdentifier: userCellId)
         tableView.register(ProfilOneSpotCaptionCell.self, forCellReuseIdentifier: captionCellId)
+        tableView.register(ProfilOneSpotLocationCell.self, forCellReuseIdentifier: mapCellId)
         
         tableView.delegate = self
         tableView.dataSource = self        
     }
 }
 
-// MARK - TableView Datasource
+// MARK - Tableview Datasource
 extension ProfilOneSpotVC: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -112,17 +112,17 @@ extension ProfilOneSpotVC: UITableViewDataSource {
             return cell
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: userCellId, for: indexPath) as! ProfilOneSpotUserCell
-            
-            cell.spot = spotToReceive
-            
+                        
             return cell
         case 2:
             let cell = tableView.dequeueReusableCell(withIdentifier: captionCellId, for: indexPath) as! ProfilOneSpotCaptionCell
             cell.spot = spotToReceive
             return cell
-
+            
+        case 3:
+            let cell = tableView.dequeueReusableCell(withIdentifier: mapCellId, for: indexPath) as! ProfilOneSpotLocationCell
+            
             cell.spot = spotToReceive
-            //            cell.titleLabel.text = spotToReceive.description
             
             return cell
         default:
@@ -131,6 +131,11 @@ extension ProfilOneSpotVC: UITableViewDataSource {
             return cell
         }
     }
+    
+}
+
+// MARK - Tableview Delegate
+extension ProfilOneSpotVC: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
@@ -149,5 +154,4 @@ extension ProfilOneSpotVC: UITableViewDataSource {
     }
     
 }
-
 

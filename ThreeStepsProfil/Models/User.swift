@@ -6,7 +6,7 @@
 //  Copyright © 2018 CoachThys. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 struct User {
     

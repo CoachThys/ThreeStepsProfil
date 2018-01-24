@@ -11,6 +11,7 @@ import CoreLocation
 
 class ProfilCategorySpotsVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
+    // MARK - Properties
     let cellId = "cellId"
     var collectionView: UICollectionView!
     var spotList:[Spot] = []
@@ -20,6 +21,7 @@ class ProfilCategorySpotsVC: UIViewController, UICollectionViewDelegate, UIColle
     var categoryToReceive: Category?
     let insets: CGFloat = 8
     
+    // MARK - Data to fetch
     var categoryDict: [String:[Spot]] = [
         "FRANCE": [
             Spot(imageFileURL: "nat1", description: "Quelle splendeur"),
@@ -53,7 +55,8 @@ class ProfilCategorySpotsVC: UIViewController, UICollectionViewDelegate, UIColle
             Spot(imageFileURL: "nat9", description: "Venez voir comme c'est beau ici")
         ]
     ]
-    
+
+    // MARK - Setup Views
     let backgroundContainerView: UIView = {
         let view = UIView()
         
@@ -69,13 +72,10 @@ class ProfilCategorySpotsVC: UIViewController, UICollectionViewDelegate, UIColle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        view.addSubview(backgroundContainerView)
-        backgroundContainerView.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
-        
+
+        setupBackgroundView()
         setupNavBar()
         setupCollectionView()
-
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -85,6 +85,11 @@ class ProfilCategorySpotsVC: UIViewController, UICollectionViewDelegate, UIColle
         if let list = categoryDict[currentCategory.countryId] {
             self.spotList = list
         }
+    }
+    
+    fileprivate func setupBackgroundView() {
+        view.addSubview(backgroundContainerView)
+        backgroundContainerView.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
     }
     
     fileprivate func setupNavBar() {
@@ -98,9 +103,6 @@ class ProfilCategorySpotsVC: UIViewController, UICollectionViewDelegate, UIColle
             return
         }
         navigationItem.title = category.countryId
-        
-        //        self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedStringKey.font: UIFont(name: "AvenirNext-DemiBold", size: 20) ?? print("FONT EXISTE PAS")]
-        //        self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedStringKey.foregroundColor: UIColor.white]
         
         // Navigation bar transparente
         let navBar = self.navigationController?.navigationBar
@@ -186,17 +188,6 @@ extension ProfilCategorySpotsVC {
     }
     
 }
-
-
-
-
-
-
-
-
-
-
-
 
 
 
