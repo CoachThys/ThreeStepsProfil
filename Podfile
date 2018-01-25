@@ -6,12 +6,6 @@ target 'ThreeStepsProfil' do
   use_frameworks!
 
   # Pods for ThreeStepsProfil
-pod 'Firebase/Core'
-pod 'Firebase/Firestore'
-pod 'Firebase/Auth'
-pod 'Firebase/Database'
-pod 'Firebase/Storage'
-
 pod 'GoogleMaps'
 
 
