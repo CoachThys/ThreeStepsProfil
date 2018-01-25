@@ -24,35 +24,35 @@ class ProfilCategorySpotsVC: UIViewController, UICollectionViewDelegate, UIColle
     // MARK - Data to fetch
     var categoryDict: [String:[Spot]] = [
         "FRANCE": [
-            Spot(imageFileURL: "nat1", description: "Quelle splendeur"),
-            Spot(imageFileURL: "nat2", description: "C'est fantastique"),
-            Spot(imageFileURL: "nat3", description: "J'en ai les larmes aux yeux"),
+            Spot(imageFileURL: "nature1", description: "Quelle splendeur"),
+            Spot(imageFileURL: "nature2", description: "C'est fantastique"),
+            Spot(imageFileURL: "nature3", description: "J'en ai les larmes aux yeux"),
 
         ],
         "ESPAGNE": [
-            Spot(imageFileURL: "nat2", description: "Quelle splendeur"),
-            Spot(imageFileURL: "nat3", description: "C'est fantastique"),
+            Spot(imageFileURL: "nature2", description: "Quelle splendeur"),
+            Spot(imageFileURL: "nature3", description: "C'est fantastique"),
 
         ],
         "AUSTRALIE": [
-            Spot(imageFileURL: "nat3", description: "Quelle splendeur"),
-            Spot(imageFileURL: "nat4", description: "C'est fantastique"),
-            Spot(imageFileURL: "nat5", description: "J'en ai les larmes aux yeux"),
-            Spot(imageFileURL: "nat6", description: "Vivre libre les amis"),
+            Spot(imageFileURL: "nature3", description: "Quelle splendeur"),
+            Spot(imageFileURL: "nature4", description: "C'est fantastique"),
+            Spot(imageFileURL: "nature5", description: "J'en ai les larmes aux yeux"),
+            Spot(imageFileURL: "nature6", description: "Vivre libre les amis"),
         ],
         "MEXIQUE": [
-            Spot(imageFileURL: "nat4", description: "Quelle splendeur"),
-            Spot(imageFileURL: "nat5", description: "C'est fantastique"),
-            Spot(imageFileURL: "nat6", description: "J'en ai les larmes aux yeux"),
-            Spot(imageFileURL: "nat7", description: "Vivre libre les amis"),
-            Spot(imageFileURL: "nat8", description: "Venez voir comme c'est beau ici")
+            Spot(imageFileURL: "nature4", description: "Quelle splendeur"),
+            Spot(imageFileURL: "nature5", description: "C'est fantastique"),
+            Spot(imageFileURL: "nature6", description: "J'en ai les larmes aux yeux"),
+            Spot(imageFileURL: "nature7", description: "Vivre libre les amis"),
+            Spot(imageFileURL: "nature8", description: "Venez voir comme c'est beau ici")
         ],
         "TUNISIE": [
-            Spot(imageFileURL: "nat5", description: "Quelle splendeur"),
-            Spot(imageFileURL: "nat6", description: "C'est fantastique"),
-            Spot(imageFileURL: "nat7", description: "J'en ai les larmes aux yeux"),
-            Spot(imageFileURL: "nat8", description: "Vivre libre les amis"),
-            Spot(imageFileURL: "nat9", description: "Venez voir comme c'est beau ici")
+            Spot(imageFileURL: "nature5", description: "Quelle splendeur"),
+            Spot(imageFileURL: "nature6", description: "C'est fantastique"),
+            Spot(imageFileURL: "nature7", description: "J'en ai les larmes aux yeux"),
+            Spot(imageFileURL: "nature8", description: "Vivre libre les amis"),
+            Spot(imageFileURL: "nature9", description: "Venez voir comme c'est beau ici")
         ]
     ]
 

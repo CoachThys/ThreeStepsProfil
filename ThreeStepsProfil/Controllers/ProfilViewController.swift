@@ -26,11 +26,11 @@ class ProfilViewController: UIViewController, UICollectionViewDelegateFlowLayout
     
     // MARK - Data to fetch
     var categoryFeed: [Category]? = [
-        Category(countryId: "FRANCE", imageUrl: "nat1"),
-        Category(countryId: "ESPAGNE", imageUrl: "nat2"),
-        Category(countryId: "AUSTRALIE", imageUrl: "nat3"),
-        Category(countryId: "MEXIQUE", imageUrl: "nat4"),
-        Category(countryId: "TUNISIE", imageUrl: "nat5")
+        Category(countryId: "FRANCE", imageUrl: "nature1"),
+        Category(countryId: "ESPAGNE", imageUrl: "nature2"),
+        Category(countryId: "AUSTRALIE", imageUrl: "nature3"),
+        Category(countryId: "MEXIQUE", imageUrl: "nature4"),
+        Category(countryId: "TUNISIE", imageUrl: "nature5")
     ]
     
     // MARK - Setup Views
